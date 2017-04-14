@@ -1,8 +1,18 @@
 #include "player.h"
 #include "bullet.h"
-#include "enemy.h"
+//#include "enemy.h"
 #include <QKeyEvent>
 #include <QGraphicsScene>
+#include <QObject>
+#include <QGraphicsPixmapItem>
+#include <QDebug>
+
+Player::Player(): QObject(), QGraphicsPixmapItem(/*parent*/)
+{
+        //Setting the Image for the Player
+        setPixmap(QPixmap(":/images/Images/Player_Straight5.png"));
+
+}
 
 void Player::keyPressEvent(QKeyEvent* event)
 {
@@ -10,7 +20,7 @@ void Player::keyPressEvent(QKeyEvent* event)
         if (pos().x() > 0)
             setPos(x() - 10, y());
     }
-    else if (event->key() == Qt::Key_Right) {
+    else if (event->key() == Qt::Key_Right) {   //CHANGE WIDTHS OF ALL
         //Position plus width of player minus width of scene
         if (pos().x() + 100 < 1920)
              setPos(x() + 10, y());
@@ -34,7 +44,7 @@ void Player::keyPressEvent(QKeyEvent* event)
 
     }
 }
-
+/*
 void Player::spawn()
 {
     //Spawning/Creating an Enemy
@@ -42,4 +52,4 @@ void Player::spawn()
     Enemy* enemy = new Enemy();
     scene()->addItem(enemy);
 
-}
+} */

@@ -1,21 +1,18 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <QGraphicsRectItem>
+
+#include <QGraphicsPixmapItem>
 #include <QObject>
 
-class Player: public QObject, public QGraphicsRectItem
+class Player: public QObject, public QGraphicsPixmapItem
 {
-    //Include Macro
     Q_OBJECT
 
        public:
-
+            Player();
             void keyPressEvent(QKeyEvent* event);
-
-        public slots:
-
-            void spawn();
-
+     //   public slots:
+      //      void spawn();
 
 };
 #endif // PLAYER_H

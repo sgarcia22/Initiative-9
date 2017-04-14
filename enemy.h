@@ -14,8 +14,9 @@ class Enemy: public QObject, public QGraphicsRectItem
         Enemy();
 
     public slots:
-
+        void spawn();
         void move();
+
 };
 
 

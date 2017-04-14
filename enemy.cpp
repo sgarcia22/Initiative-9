@@ -12,7 +12,7 @@ Enemy::Enemy()
 
 
     //Setting the Rectangle for the Enemy
-    setRect(0,0, 10, 50);
+    setRect(0,0, 100, 100);
 
     //Connect signal to slot so that Enemy can move
     QTimer* timer = new QTimer();
@@ -20,6 +20,11 @@ Enemy::Enemy()
 
     timer->start(50);
 
+}
+
+void Enemy::spawn()
+{
+    scene()->addItem(this);
 }
 
 void Enemy::move()
@@ -34,4 +39,5 @@ void Enemy::move()
         delete this;
     }
 }
+
 

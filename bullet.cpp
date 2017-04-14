@@ -2,10 +2,10 @@
 #include <QTimer>
 #include <QGraphicsScene>
 
-Bullet::Bullet()
+Bullet::Bullet(/*QGraphicsItem* parent*/): QObject(), QGraphicsPixmapItem(/*parent*/)
 {
     //Setting the Rectangle for the Bullet
-    setRect(0,0, 10, 50);
+    setPixmap(QPixmap(":/images/Images/Bullet.png"));
 
     //Connect signal to slot so that Bullet can move
     QTimer* timer = new QTimer();
@@ -21,7 +21,7 @@ void Bullet::move()
     setPos(x(), y() - 20);
 
     //Check if Bullet is off the screen, if so Delete it
-    if (pos().y() + rect().height() < 0) {
+    if (pos().y() /*+ this.height()*/ < 0) {   //FIX THE HEIGHT THING
         //Remove from scene before deleting
         scene()->removeItem(this);
         delete this;

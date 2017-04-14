@@ -35,3 +35,6 @@ HEADERS  += skeletonproject.h \
     enemy.h
 
 FORMS    += skeletonproject.ui
+
+RESOURCES += \
+    images.qrc
