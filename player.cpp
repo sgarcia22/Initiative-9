@@ -1,21 +1,27 @@
 #include "player.h"
 #include "bullet.h"
+#include "enemy.h"
 #include <QKeyEvent>
 #include <QGraphicsScene>
 
 void Player::keyPressEvent(QKeyEvent* event)
 {
     if (event->key() == Qt::Key_Left) {
-        setPos(x() - 10, y());
+        if (pos().x() > 0)
+            setPos(x() - 10, y());
     }
     else if (event->key() == Qt::Key_Right) {
-        setPos(x() + 10, y());
+        //Position plus width of player minus width of scene
+        if (pos().x() + 100 < 1920)
+             setPos(x() + 10, y());
     }
     else if (event->key() == Qt::Key_Down) {
-        setPos(x(), y() + 10);
+        if (pos().y() + 100 < 1080)
+             setPos(x(), y() + 10);
     }
     else if (event->key() == Qt::Key_Up) {
-        setPos(x() + 10, y() - 10);
+        if (pos().y() > 0)
+            setPos(x(), y() - 10);
     }
     else if (event->key() == Qt::Key_Space) {
 
@@ -27,4 +33,13 @@ void Player::keyPressEvent(QKeyEvent* event)
         scene()->addItem(bullet);
 
     }
+}
+
+void Player::spawn()
+{
+    //Spawning/Creating an Enemy
+
+    Enemy* enemy = new Enemy();
+    scene()->addItem(enemy);
+
 }

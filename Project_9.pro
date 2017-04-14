@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         skeletonproject.cpp \
     player.cpp \
-    bullet.cpp
+    bullet.cpp \
+    enemy.cpp
 
 HEADERS  += skeletonproject.h \
     player.h \
-    bullet.h
+    bullet.h \
+    enemy.h
 
 FORMS    += skeletonproject.ui

@@ -1,8 +1,12 @@
 #include "skeletonproject.h"
+#include "player.h"
+
+
 #include <QApplication>
 #include <QGraphicsScene>
-#include "player.h"
 #include <QGraphicsView>
+#include <QTimer>
+
 
 ///Shooter Game
 
@@ -34,6 +38,25 @@ int main(int argc, char *argv[])
     screen->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     screen->show();
+
+    //Setting Resolution
+    //Inside View
+    screen->setFixedSize(1920,1080);
+    //Outside Scene/View
+    scene->setSceneRect(0,0,1920,1080);
+
+    //Move Player Item from starting at Origin
+    player->setPos(screen->width()/2, screen->height() - player->rect().height());
+
+
+    //Spawn Randomly Positioned Enemies ///TODO CHANGE TO ANOTHER CLASS/REMOVE PERSON
+    QTimer* timer = new QTimer();
+
+    //TODO FIX, NOT READING SPAWN SLOT
+    QObject::connect(timer, SIGNAL(timeout()), player, SLOT(spawn()));
+    //Spawns enemies every 2000 millisenconds, or 2 seconds
+    timer->start(2000);
+
 
     return a.exec();
 }
